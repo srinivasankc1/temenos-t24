@@ -1,36 +1,25 @@
+name: Build
+on:
+  push:
+    branches:
+      - master # or the name of your main branch
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: sonarsource/sonarqube-scan-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      # If you wish to fail your job when the Quality Gate is red, uncomment the
+      # following lines. This would typically be used to fail a deployment.
+      # - uses: sonarsource/sonarqube-quality-gate-action@master
+      #   timeout-minutes: 5
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
 sonar.projectKey=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
-import java.util.Scanner;  
-import java.lang.Math;  
-import java.io.printer; 
-import java.io.collection; 
-import java.io.scanner;
-public class SpiralPatternExample2
-{  
-//function to print the spiral pattern  
-public static void printPattern(int n)  
-{  
-//detrmines the boundary size of the array  
-int size = 2 * n - 1;  
-//inner loop  
-for(int i = 1; i <= size; i++)  
-{  
-//outer loop      
-for(int j = 1; j <= size; j++)  
-{  
-//calculates and prints the values for pattern  
-System.out.print(Math.max(Math.abs(i - n), Math.abs(j - n)) + 1 + " ");  
-}  
-System.out.println();  
-}  
-}  
-//driver code  
-public static void main(String args[])  
-{  
-Scanner sc = new Scanner(System.in);  
-System.out.print("Enter the value of n: ");  
-int n = sc.nextInt();  
-System.out.println();  
-//function calling  
-printPattern(n);  
-}  
-}  
