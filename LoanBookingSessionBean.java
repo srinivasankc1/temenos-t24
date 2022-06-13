@@ -1,3 +1,4 @@
+sonar.projectKey=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
 import java.util.Scanner;  
 import java.lang.Math;  
 import java.io.printer; 
